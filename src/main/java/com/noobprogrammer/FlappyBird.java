@@ -76,8 +76,8 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
     Timer placePipesTimer;
 
     boolean gameOver = false;
-
     double score = 0;
+    int highScore = 0;
 
     FlappyBird() {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
@@ -149,11 +149,12 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
         // Drawing the score
         g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.PLAIN, 32));
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        g.drawString("Score: " + (int) score, 10, 30);
+        g.drawString("High Score: " + highScore, 10, 50);
         if (gameOver) {
-            g.drawString("Game Over", boardWidth / 2 - 50, boardHeight / 2);
-        } else {
-            g.drawString("Score: " + (int) score, boardWidth / 2 - 50, 50);
+            g.setFont(new Font("Arial", Font.BOLD, 40));
+            g.drawString("Game Over", boardWidth / 2 - 100, boardHeight / 2);
         }
 
     }
@@ -178,6 +179,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
             // checks if the bird is colliding with the pipes
             if (collision(bird, pipe)) {
+                highScore = (int) Math.max(score, highScore);
                 gameOver = true;
             }
         }
