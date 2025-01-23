@@ -2,6 +2,8 @@
 
 A simple Flappy Bird game implemented in Java using Swing.
 
+![Flappy Bird](src/main/resources/assets/gamedemo.png)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
